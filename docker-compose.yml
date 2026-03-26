@@ -10,6 +10,8 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/blog
+    expose:
+      - "8080"
 
   db:
     image: postgres:15
