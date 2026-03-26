@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    # Монтируем локальный код для разработки
+    volumes:
+      - ./app:/app
+    # Перенаправляем порт приложения
+    ports:
+      - "8080:8080"
+    # Можно добавить переменные окружения для dev
+    environment:
+      NODE_ENV: development
+    # Запуск приложения через make dev
+    command: make dev
