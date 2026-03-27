@@ -1,6 +1,15 @@
 start:
 	./wait-for-db.sh db:5432 -- npm run start
-ci:
-	docker compose run --rm app npm test
+
+dev:
+	docker compose up --build
+
 test:
-	npm test
+	docker compose up -d
+	docker compose exec app npm test -s
+
+ci:
+	docker compose up -d
+	docker compose exec app sh -c "NODE_ENV=test npm run migrate"
+	docker compose exec app sh -c "NODE_ENV=test npm test"
+	docker compose down -v
