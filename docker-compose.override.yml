@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app:
-    command: npm start
+    command: make dev
     image: yanoka2010/docker-project-74
     ports:
       - "8081:8080"
